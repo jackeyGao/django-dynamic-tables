@@ -68,9 +68,6 @@ def index(request):
     except LookupError:
         cls = get_log_model(today)
 
-    print cls.__name__
-    print cls._meta.db_table
-
     if not cls.is_exists():
         with connection.schema_editor() as schema_editor:
             schema_editor.create_model(cls)
